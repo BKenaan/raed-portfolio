@@ -187,20 +187,17 @@
     "END:VCARD",
   ].join("\r\n");
 
-  /* ---------- Save contact (vCard download) ---------- */
+  /* ---------- Save contact (links to a hosted .vcf) ----------
+     Works on iOS, Android and desktop. The button is an <a> pointing at
+     assets/raed-kenaan.vcf. On Apple devices we leave OFF the `download`
+     attribute so Safari opens the native "Add to Contacts" screen; on
+     Android/desktop we add it so the file is saved/imported directly. */
   const saveBtn = $("#saveContact");
   if (saveBtn) {
-    saveBtn.addEventListener("click", () => {
-      const blob = new Blob([VCARD], { type: "text/vcard;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "Raed-Kenaan.vcf";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      setTimeout(() => URL.revokeObjectURL(url), 1500);
-    });
+    const isApple =
+      /iP(hone|ad|od)/i.test(navigator.userAgent) ||
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    if (!isApple) saveBtn.setAttribute("download", "Raed-Kenaan.vcf");
   }
 
   /* ---------- Scan-to-save QR (encodes the same vCard) ---------- */

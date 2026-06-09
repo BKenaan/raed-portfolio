@@ -9,3 +9,6 @@ node_modules/
 # Local env
 .env
 .env.local
+
+# Business-card build artifacts (fonts, generator scratch); keep the final PNG/PDF/spec
+business-card/.build/
