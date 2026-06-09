@@ -54,15 +54,17 @@ python -m http.server 5500
 npx serve .
 ```
 
-## ✉️ Activate the contact form (1 minute)
-The form works out of the box via a `mailto:` fallback. To receive messages as
-proper emails:
-1. Sign up at https://formspree.io (free) and create a form for `kanaan5g@gmail.com`.
-2. Copy your form endpoint, e.g. `https://formspree.io/f/abcd1234`.
-3. In `index.html`, replace `YOUR_FORM_ID` in the `<form action="...">` with it.
+## ✉️ Contact form
+The form posts to [FormSubmit.co](https://formsubmit.co) — no account or API key
+required. Submissions are emailed to `kanaan5g@gmail.com`.
 
-That's it — submissions are emailed to you, and the JS shows inline success/error
-states without leaving the page.
+**One-time activation:** the first time the form is submitted, FormSubmit emails
+`kanaan5g@gmail.com` a confirmation link — click **"Activate Form"** once and all
+future submissions are delivered automatically. The JS submits via AJAX and shows
+inline success/error states without leaving the page.
+
+To change the recipient, edit the email in the `<form action="https://formsubmit.co/ajax/…">`
+in `index.html`.
 
 ## 🌍 Deployment
 **Netlify (drag & drop):** go to https://app.netlify.com/drop and drop the

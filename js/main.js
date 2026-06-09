@@ -227,7 +227,7 @@
       status.textContent = "";
 
       // Honeypot: silently drop bots
-      if (form._gotcha && form._gotcha.value) return;
+      if (form._honey && form._honey.value) return;
 
       if (!form.checkValidity()) {
         status.classList.add("err");
@@ -237,19 +237,6 @@
       }
 
       const action = form.getAttribute("action") || "";
-      // If the Formspree endpoint hasn't been configured, fall back to mailto.
-      if (action.includes("YOUR_FORM_ID")) {
-        const data = new FormData(form);
-        const subject = encodeURIComponent(data.get("subject") || "Portfolio enquiry");
-        const body = encodeURIComponent(
-          `Name: ${data.get("name")}\nEmail: ${data.get("email")}\n\n${data.get("message")}`
-        );
-        window.location.href = `mailto:kanaan5g@gmail.com?subject=${subject}&body=${body}`;
-        status.classList.add("ok");
-        status.textContent = "Opening your email app…";
-        return;
-      }
-
       btn.disabled = true;
       const original = btn.textContent;
       btn.textContent = "Sending…";

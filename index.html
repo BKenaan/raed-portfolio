@@ -577,8 +577,10 @@
           </div>
         </div>
 
-        <!-- Contact form: posts to Formspree (no backend needed). Replace the action URL. -->
-        <form class="form reveal" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+        <!-- Contact form: posts to FormSubmit.co (no account/API key needed).
+             Submissions are emailed to kanaan5g@gmail.com once the form is
+             activated (one-time confirmation link sent on first submission). -->
+        <form class="form reveal" id="contactForm" action="https://formsubmit.co/ajax/kanaan5g@gmail.com" method="POST" novalidate>
           <div class="form__row">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" autocomplete="name" required placeholder="Your full name" />
@@ -595,8 +597,12 @@
             <label for="message">Message</label>
             <textarea id="message" name="message" rows="5" required placeholder="Tell me about the role or project…"></textarea>
           </div>
+          <!-- FormSubmit settings -->
+          <input type="hidden" name="_subject" value="New enquiry from your portfolio" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
           <!-- Honeypot anti-spam field (hidden from humans) -->
-          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="form__honeypot" aria-hidden="true" />
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="form__honeypot" aria-hidden="true" />
 
           <button type="submit" class="btn btn--primary btn--block" id="submitBtn">Send message</button>
           <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
