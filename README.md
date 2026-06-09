@@ -5,6 +5,10 @@ executive. Built with semantic HTML5, modern CSS (custom properties + grid), and
 vanilla JavaScript — no build step, no framework, fast to load and trivial to deploy.
 
 ## ✨ Features
+- **Business-card ready**: one-tap **"Save my contact"** downloads a vCard (.vcf)
+  straight into the visitor's phone, plus quick **Call / WhatsApp / Email / LinkedIn** buttons
+- Personal hero with a profile avatar (drop a photo at `assets/profile.jpg`;
+  it falls back to gradient "RK" initials automatically)
 - Light / dark theme toggle (remembers your choice)
 - Animated network-graph hero canvas (telecom-inspired, pauses when tab hidden)
 - Animated KPI counters and skill meters

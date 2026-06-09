@@ -172,6 +172,36 @@
     });
   }
 
+  /* ---------- Save contact (vCard download) ---------- */
+  const saveBtn = $("#saveContact");
+  if (saveBtn) {
+    const vcard = [
+      "BEGIN:VCARD",
+      "VERSION:3.0",
+      "N:Kenaan;Raed;;;",
+      "FN:Raed Kenaan",
+      "TITLE:Chief Technology & Information Officer",
+      "TEL;TYPE=CELL,VOICE:+971588152961",
+      "TEL;TYPE=VOICE:+96170345555",
+      "EMAIL;TYPE=INTERNET:kanaan5g@gmail.com",
+      "ADR;TYPE=WORK:;;Dubai;;;;United Arab Emirates",
+      "URL:https://www.linkedin.com/in/raed-kanaan-444a86a1",
+      "END:VCARD",
+    ].join("\r\n");
+
+    saveBtn.addEventListener("click", () => {
+      const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Raed-Kenaan.vcf";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 1500);
+    });
+  }
+
   /* ---------- Contact form (Formspree-compatible, AJAX) ---------- */
   const form = $("#contactForm");
   if (form) {
