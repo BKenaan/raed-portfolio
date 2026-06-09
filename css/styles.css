@@ -263,6 +263,13 @@ ul { list-style: none; }
 .contact__ic { width: 42px; height: 42px; flex: none; display: grid; place-items: center; border-radius: 11px; background: var(--surface); border: 1px solid var(--border); font-size: 1rem; font-weight: 700; }
 .contact__list a:hover { color: var(--brand); }
 
+.qr-card { display: flex; align-items: center; gap: 1.1rem; margin-top: 1.8rem; padding: 1.1rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+.qr-card__code { flex: none; width: 96px; height: 96px; background: #fff; padding: 8px; border-radius: 12px; display: grid; place-items: center; }
+.qr-card__code img, .qr-card__code canvas { width: 100% !important; height: 100% !important; display: block; }
+.qr-card__text { display: flex; flex-direction: column; gap: .2rem; }
+.qr-card__text strong { font-size: .98rem; }
+.qr-card__text span { font-size: .85rem; color: var(--text-mute); }
+
 .form { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.9rem; box-shadow: var(--shadow-soft); }
 .form__row { margin-bottom: 1.1rem; }
 .form__row label { display: block; font-size: .85rem; font-weight: 600; color: var(--text-soft); margin-bottom: .45rem; }

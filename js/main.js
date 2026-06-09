@@ -172,25 +172,26 @@
     });
   }
 
+  /* ---------- Contact card: vCard string (shared by button + QR) ---------- */
+  const VCARD = [
+    "BEGIN:VCARD",
+    "VERSION:3.0",
+    "N:Kenaan;Raed;;;",
+    "FN:Raed Kenaan",
+    "TITLE:Chief Technology & Information Officer",
+    "TEL;TYPE=CELL,VOICE:+971588152961",
+    "TEL;TYPE=VOICE:+96170345555",
+    "EMAIL;TYPE=INTERNET:kanaan5g@gmail.com",
+    "ADR;TYPE=WORK:;;Dubai;;;;United Arab Emirates",
+    "URL:https://www.linkedin.com/in/raed-kanaan-444a86a1",
+    "END:VCARD",
+  ].join("\r\n");
+
   /* ---------- Save contact (vCard download) ---------- */
   const saveBtn = $("#saveContact");
   if (saveBtn) {
-    const vcard = [
-      "BEGIN:VCARD",
-      "VERSION:3.0",
-      "N:Kenaan;Raed;;;",
-      "FN:Raed Kenaan",
-      "TITLE:Chief Technology & Information Officer",
-      "TEL;TYPE=CELL,VOICE:+971588152961",
-      "TEL;TYPE=VOICE:+96170345555",
-      "EMAIL;TYPE=INTERNET:kanaan5g@gmail.com",
-      "ADR;TYPE=WORK:;;Dubai;;;;United Arab Emirates",
-      "URL:https://www.linkedin.com/in/raed-kanaan-444a86a1",
-      "END:VCARD",
-    ].join("\r\n");
-
     saveBtn.addEventListener("click", () => {
-      const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
+      const blob = new Blob([VCARD], { type: "text/vcard;charset=utf-8" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
@@ -199,6 +200,19 @@
       a.click();
       document.body.removeChild(a);
       setTimeout(() => URL.revokeObjectURL(url), 1500);
+    });
+  }
+
+  /* ---------- Scan-to-save QR (encodes the same vCard) ---------- */
+  const qrEl = $("#contactQr");
+  if (qrEl && typeof QRCode !== "undefined") {
+    new QRCode(qrEl, {
+      text: VCARD,
+      width: 168,
+      height: 168,
+      colorDark: "#0c1730",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.M,
     });
   }
 
